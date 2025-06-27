@@ -11,15 +11,23 @@
 
     <header>
         <div class="container">
-            .header-left {
-            position: absolute; /* Keep absolute positioning */
-            bottom: 20px; /* Align 20px from the bottom of the header */
-            left: 20px; /* Keep 20px from the left */
-            text-align: left; /* Align text to the left */
-            /* Remove or comment out 'top' and 'transform' properties if they exist */
-            top: auto; /* Ensure it's not conflicting with 'top' if previously set */
-            transform: none; /* Remove any previous transform that might offset it */
-        }
+            <div class="header-left">
+                <h1>GREENLOOP</h1>
+                <p class="tagline">Start With Nothing, Build Everything ~ </p>
+            </div>
+            <div class="header-right">
+                <nav>
+                    <ul>
+                        <li><a href="#" class="btn">Login</a></li>
+                        <li><a href="#" class="btn menu-btn">Menu <i class="fas fa-bars"></i></a></li>
+                    </ul>
+                </nav>
+                <div class="search-container">
+                    <button class="search-btn"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </header>
             <div class="header-right">
                 <nav>
                     <ul>
