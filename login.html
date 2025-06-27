@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREENLOOP - Login / Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ==== Login/Sign Up Page Specific Styles ==== */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh; /* Make it take most of the viewport height */
+            background-color: #f8f8f8; /* Light background for the page */
+            padding: 20px;
+        }
+
+        .auth-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            transition: all 0.3s ease; /* Smooth transition for any changes */
+        }
+
+        .auth-card h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #28a745;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left; /* Align labels to the left */
+        }
+
+        .form-group label {
+            display: block; /* Make label take full width */
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="text"] {
+            width: calc(100% - 20px); /* Account for padding */
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        .form-group input[type="email"]:focus,
+        .form-group input[type="password"]:focus,
+        .form-group input[type="text"]:focus {
+            border-color: #28a745; /* Green border on focus */
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.2); /* Subtle shadow on focus */
+        }
+
+        .form-actions {
+            margin-top: 30px;
+        }
+
+        .auth-card .btn {
+            width: 100%; /* Make buttons take full width */
+            padding: 12px 20px;
+            font-size: 1.1em;
+            margin-top: 10px; /* Space between buttons if stacked */
+        }
+
+        .toggle-form {
+            margin-top: 25px;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .toggle-form a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments for login/signup page */
+        @media (max-width: 480px) {
+            .auth-card {
+                padding: 25px;
+                margin: 0 15px; /* Add some margin on very small screens */
+            }
+
+            .auth-card h2 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+
+            .form-group input {
+                padding: 10px;
+            }
+
+            .auth-card .btn {
+                padding: 10px 15px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-left">
+                <h1>GREENLOOP</h1>
+                <p class="tagline">Start With Nothing, Build Everything ~ </p>
+            </div>
+            <div class="header-right">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="btn">Home</a></li> <!-- Link back to home -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="login-container">
+            <div class="auth-card">
+                <h2 id="formTitle">Login</h2>
+                <form id="authForm">
+                    <div class="form-group" id="nameGroup" style="display: none;">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="********" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn" id="submitButton">Login</button>
+                    </div>
+                </form>
+                <div class="toggle-form">
+                    <p id="toggleText">Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>GREENLOOP &copy; 2025</p>
+    </footer>
+
+    <script>
+        // ==== Login/Sign Up Form Functionality ====
+        const authForm = document.getElementById('authForm');
+        const formTitle = document.getElementById('formTitle');
+        const nameGroup = document.getElementById('nameGroup');
+        const submitButton = document.getElementById('submitButton');
+        const toggleText = document.getElementById('toggleText');
+
+        let isLogin = true; // State to track if current form is login or sign up
+
+        /**
+         * Toggles the form between Login and Sign Up states.
+         */
+        function toggleForm() {
+            isLogin = !isLogin; // Flip the state
+
+            if (isLogin) {
+                formTitle.textContent = 'Login';
+                nameGroup.style.display = 'none'; // Hide name field for login
+                submitButton.textContent = 'Login';
+                toggleText.innerHTML = `Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a>`;
+            } else {
+                formTitle.textContent = 'Sign Up';
+                nameGroup.style.display = 'block'; // Show name field for sign up
+                submitButton.textContent = 'Sign Up';
+                toggleText.innerHTML = `Already have an account? <a href="#" onclick="toggleForm()">Login</a>`;
+            }
+        }
+
+        // --- Handle form submission ---
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            let message = '';
+
+            if (isLogin) {
+                message = `Attempting to log in with Email: ${email}, Password: ${password}`;
+            } else {
+                const name = document.getElementById('name').value;
+                message = `Attempting to sign up with Name: ${name}, Email: ${email}, Password: ${password}`;
+            }
+
+            // In a real application, you would send this data to a server
+            // For now, we'll just log it to the console or show a simple alert message (using a custom modal here)
+            showCustomMessage('Form Submission', message + '\n(This is a demo. In a real app, data would be sent to a backend.)');
+        });
+
+        // ==== Custom Message Box (Replaces alert/confirm) ====
+        // Append message box to body
+        const messageBoxContainer = document.createElement('div');
+        messageBoxContainer.id = 'customMessageBox';
+        messageBoxContainer.style.cssText = `
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        `;
+        document.body.appendChild(messageBoxContainer);
+
+        const messageBoxContent = document.createElement('div');
+        messageBoxContent.style.cssText = `
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+        `;
+        messageBoxContainer.appendChild(messageBoxContent);
+
+        const messageBoxTitle = document.createElement('h3');
+        messageBoxTitle.style.cssText = `
+            margin-top: 0;
+            color: #28a745;
+            font-family: 'Poppins', sans-serif;
+        `;
+        messageBoxContent.appendChild(messageBoxTitle);
+
+        const messageBoxBody = document.createElement('p');
+        messageBoxBody.style.cssText = `
+            margin-bottom: 20px;
+            line-height: 1.6;
+        `;
+        messageBoxContent.appendChild(messageBoxBody);
+
+        const messageBoxCloseBtn = document.createElement('button');
+        messageBoxCloseBtn.textContent = 'OK';
+        messageBoxCloseBtn.style.cssText = `
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        `;
+        messageBoxCloseBtn.onmouseover = () => messageBoxCloseBtn.style.backgroundColor = '#218838';
+        messageBoxCloseBtn.onmouseout = () => messageBoxCloseBtn.style.backgroundColor = '#28a745';
+        messageBoxCloseBtn.onclick = () => messageBoxContainer.style.display = 'none';
+        messageBoxContent.appendChild(messageBoxCloseBtn);
+
+
+        /**
+         * Displays a custom message box instead of alert().
+         * @param {string} title - The title of the message box.
+         * @param {string} message - The message content.
+         */
+        function showCustomMessage(title, message) {
+            messageBoxTitle.textContent = title;
+            messageBoxBody.textContent = message;
+            messageBoxContainer.style.display = 'flex';
+        }
+    </script>
+
+</body>
+</html>
