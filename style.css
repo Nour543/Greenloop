@@ -240,6 +240,169 @@ footer {
     border-top: 5px solid #28a745; /* Green top border */
 }
 
+/* ==== Chatbot Icon Styles ==== */
+.greenbot-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #28a745; /* Green color */
+    color: white;
+    border-radius: 50px; /* Fully rounded for a pill/circle shape */
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.greenbot-icon:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.greenbot-icon img {
+    width: 32px; /* Adjusted size of the image */
+    height: 32px; /* Adjusted size of the image */
+    border-radius: 50%; /* Make image circular */
+    margin-right: 10px;
+    object-fit: cover; /* Ensure image covers the area */
+}
+
+.greenbot-icon span {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* ==== Chatbot Modal Styles ==== */
+.greenbot-chat-modal {
+    display: none; /* Hidden by default, will be set to 'flex' by JS */
+    position: fixed;
+    bottom: 100px; /* Position above the icon */
+    right: 30px;
+    width: 350px;
+    height: 450px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1001; /* Above the icon */
+    flex-direction: column; /* Organize content vertically */
+    overflow: hidden; /* Hide overflowing content */
+    font-family: 'Open Sans', sans-serif; /* Use consistent font */
+}
+
+.chat-header {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+}
+
+.chat-header h3 {
+    margin: 0;
+}
+
+.chat-header .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em;
+    cursor: pointer;
+    line-height: 1; /* For better vertical alignment of 'x' */
+    transition: color 0.2s ease;
+}
+
+.chat-header .close-btn:hover {
+    color: #e0e0e0;
+}
+
+.chat-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    overflow-y: auto; /* Enable scrolling for messages */
+    background-color: #f9f9f9; /* Light background for chat area */
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding-right: 5px; /* For scrollbar, if needed */
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word; /* Ensure long words break */
+}
+
+.message.user {
+    background-color: #007bff; /* Blue for user messages */
+    color: white;
+    align-self: flex-end; /* Align user messages to the right */
+    margin-left: auto; /* Push to the right */
+}
+
+.message.bot {
+    background-color: #e0e0e0; /* Light grey for bot messages */
+    color: #333;
+    align-self: flex-start; /* Align bot messages to the left */
+    margin-right: auto; /* Push to the left */
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+    color: #555;
+    background-color: #f0f0f0; /* Slightly different background for clarity */
+    border-radius: 15px;
+    max-width: 150px; /* Keep loading indicator concise */
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee; /* Separator */
+}
+
+.chat-input-area input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px; /* Rounded input field */
+    font-size: 1em;
+}
+
+.chat-input-area button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px; /* Rounded send button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-input-area button:hover {
+    background-color: #218838;
+}
+
+
+
+
 /* ==== Responsive Design ==== */
 /* --- Adjust layout for tablets and smaller desktops --- */
 @media (max-width: 992px) {
