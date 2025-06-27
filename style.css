@@ -27,7 +27,7 @@ body {
 /* --- Styling for the main header section --- */
 header {
     /* ==== Background image and height for the banner ==== */
-    background-image: url('banner3.jpg'); /* Updated image name */
+    background-image: url('banner4.jpg'); /* Updated image name */
     background-repeat: no-repeat; /* Ensure image doesn't repeat */
     background-position: center center; /* Center the background image */
     background-size: cover; /* Cover the entire header area */
