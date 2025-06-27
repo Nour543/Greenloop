@@ -27,7 +27,7 @@ body {
 /* --- Styling for the main header section --- */
 header {
     /* ==== Background image and height for the banner ==== */
-    background-image: url('banner2.jpg'); /* Explicitly define background image */
+    background-image: url('banner2.png'); /* Updated image name */
     background-repeat: no-repeat; /* Ensure image doesn't repeat */
     background-position: center center; /* Center the background image */
     background-size: cover; /* Cover the entire header area */
@@ -90,16 +90,14 @@ header nav ul li a:hover {
 
 /* --- Buttons in the header for login/menu --- */
 .btn {
-    background-color: #007bff; /* Blue button for actions */
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
+    display: inline-block; /* Allow padding and margin */
+    background-color: #28a745; /* Green button background */
+    color: white; /* White text on button */
+    padding: 10px 15px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
     font-weight: 600;
-    transition: background-color 0.3s ease;
-    /* ==== New addition to ensure clickability ==== */
-    position: relative; /* Essential for z-index to work */
-    z-index: 10;       /* Put the button on top of potential overlays */
-    pointer-events: auto; /* Ensure it receives click events */
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .btn:hover {
@@ -179,6 +177,8 @@ section h2 {
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
     transition: transform 0.3s ease; /* Smooth hover effect */
+    /* ==== Ensure card and its content are clickable ==== */
+    pointer-events: auto; /* Explicitly allow pointer events on the card */
 }
 
 .article-card:hover {
@@ -207,6 +207,14 @@ section h2 {
 .article-card .btn {
     background-color: #007bff; /* Blue button for actions */
     padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    /* ==== Ensure clickability ==== */
+    position: relative; /* Essential for z-index to work */
+    z-index: 10;       /* Put the button on top of potential overlays */
+    pointer-events: auto; /* Ensure it receives click events explicitly */
 }
 
 .article-card .btn:hover {
