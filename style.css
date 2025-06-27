@@ -1,7 +1,11 @@
+/* ==== Google Fonts Imports ==== */
+/* --- Import Poppins for headings and Open Sans for body text --- */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap');
+
 /* ==== General Styles ==== */
 /* --- Apply basic styles to the body for a consistent base --- */
 body {
-    font-family: 'Arial', sans-serif; /* A common, readable font */
+    font-family: 'Open Sans', sans-serif; /* Prettier body font */
     margin: 0; /* Remove default margin from the body */
     padding: 0; /* Remove default padding */
     background-color: #f4f4f4; /* Light grey background for the whole page */
@@ -21,22 +25,16 @@ body {
 
 /* ==== Header Styles ==== */
 /* --- Styling for the main header section --- */
-/* ==== Header Styles ==== */
-/* --- Styling for the main header section --- */
 header {
-    /* --- REMOVE these lines if they are present: --- */
-    /* background: #333; */
-    /* min-height: 70px; */
-
-    /* ==== ADD these lines for background image ==== */
-    background: url('banner2.jpg') no-repeat center center/cover;
+    /* ==== Background image and height for the banner ==== */
+    background: url('5978624549849254475.jpg') no-repeat center center/cover;
     height: 150px; /* Adjust this height as needed to fit your image/design */
     display: flex; /* Keep this to help align content vertically */
     align-items: center; /* Keep this to center content vertically */
 
     color: #fff; /* White text color (assuming your image is dark enough for white text) */
     padding: 10px 0; /* Adjust padding for header */
-    border-bottom: #77aaff 3px solid; /* A subtle blue border at the bottom */
+    border-bottom: #80D824 3px solid; /* Green border at the bottom */
     position: relative; /* Needed for absolute positioning of header elements */
 }
 
@@ -60,6 +58,7 @@ header .container {
 }
 
 header h1 {
+    font-family: 'Poppins', sans-serif; /* Prettier heading font */
     margin: 0;
     padding: 0;
     font-size: 2.2em; /* Larger font size for the title */
@@ -68,9 +67,10 @@ header h1 {
 
 /* --- Styling for the tagline under the enterprise name --- */
 .tagline {
+    font-family: 'Open Sans', sans-serif; /* Use body font for tagline */
     margin: 5px 0 0 0; /* Adjust margin to be closer to the title */
     font-size: 0.9em; /* Smaller text */
-    color: #bbb; /* Slightly lighter color for discretion */
+    color: #ccc; /* Slightly lighter color for discretion, adjusted for black background */
 }
 
 /* --- Styling for the right side of the header (Buttons and Search) --- */
@@ -114,16 +114,18 @@ header nav a {
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
     padding: 8px 15px; /* Padding for the button look */
     border-radius: 5px; /* Rounded corners for buttons */
-    background-color: #555; /* Default button background */
+    background-color: rgba(51, 51, 51, 0.7); /* Slightly transparent dark grey for buttons */
     display: flex; /* For icon alignment */
     align-items: center;
     gap: 5px; /* Space between text and icon */
+    border: 1px solid #666; /* Subtle border for button definition */
 }
 
 /* --- Hover effect for navigation links --- */
 header nav a:hover {
-    background-color: #77aaff; /* Change background color on hover */
+    background-color: #33A387; /* Darker green on hover */
     color: #fff;
+    border-color: #33A387;
 }
 
 /* --- Specific styling for the Menu button if needed --- */
@@ -141,7 +143,7 @@ header nav a:hover {
 .search-btn {
     background: none; /* No background */
     border: none; /* No border */
-    color: #bbb; /* Discreet light grey color */
+    color: #ccc; /* Discreet lighter grey color, adjusted for black background */
     font-size: 0.9em; /* Smaller font size */
     cursor: pointer;
     padding: 5px 10px; /* Small padding */
@@ -152,7 +154,7 @@ header nav a:hover {
 }
 
 .search-btn:hover {
-    color: #fff; /* White color on hover for visibility */
+    color: #80D824; /* Green color on hover for visibility */
 }
 
 /* ==== Main Content Section Styles ==== */
@@ -168,7 +170,7 @@ section {
 /* --- Hero Banner specific styles --- */
 #hero-banner {
     text-align: center;
-    background: linear-gradient(to right, #77aaff, #5588cc); /* Blue gradient */
+    background: linear-gradient(to right, #80D824, #33A387); /* Green gradient */
     color: #fff;
     padding: 50px 20px;
     border-radius: 0; /* Remove rounded corners for full width */
@@ -176,19 +178,21 @@ section {
 }
 
 #hero-banner h2 {
+    font-family: 'Poppins', sans-serif; /* Prettier heading font */
     color: #fff;
     font-size: 3em;
     margin-bottom: 10px;
 }
 
 #hero-banner p {
+    font-family: 'Open Sans', sans-serif; /* Prettier body font */
     font-size: 1.2em;
     margin-bottom: 30px;
 }
 
 #hero-banner .btn {
     background: #fff;
-    color: #5588cc;
+    color: #33A387; /* Text color matching secondary green */
     font-weight: bold;
     padding: 12px 25px;
     border-radius: 25px;
@@ -196,10 +200,12 @@ section {
 
 #hero-banner .btn:hover {
     background: #eee;
+    color: #2a8a77; /* Slightly darker green on hover */
 }
 
 /* --- Heading styles within content sections --- */
 section h2 {
+    font-family: 'Poppins', sans-serif; /* Prettier heading font */
     color: #444;
     text-align: center;
     margin-bottom: 25px;
@@ -238,6 +244,7 @@ section p {
 
 /* --- Heading for cards --- */
 .article-card h3 {
+    font-family: 'Poppins', sans-serif; /* Prettier heading font */
     color: #555;
     margin-bottom: 10px;
 }
@@ -254,7 +261,7 @@ section p {
 /* --- General button styling (used for Learn More, Read More) --- */
 .btn {
     display: inline-block; /* Allow padding and margin */
-    background: #77aaff; /* Blue background */
+    background: #80D824; /* Green background */
     color: #fff; /* White text */
     padding: 10px 20px;
     border: none;
@@ -267,7 +274,7 @@ section p {
 
 /* --- Button hover effect --- */
 .btn:hover {
-    background: #5588cc; /* Darker blue on hover */
+    background: #33A387; /* Darker green on hover */
 }
 
 
@@ -279,7 +286,7 @@ footer {
     color: #fff;
     background-color: #333;
     text-align: center;
-    border-top: #77aaff 3px solid; /* Border matching the header */
+    border-top: #80D824 3px solid; /* Green border matching the header */
 }
 
 /* ==== Responsive Design (Media Queries) ==== */
