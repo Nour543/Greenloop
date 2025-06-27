@@ -10,15 +10,13 @@ body {
 }
 
 /* --- Container to center content and add padding --- */
+/* This container is used inside sections, not the header directly */
 .container {
     width: 80%; /* Set a responsive width */
     max-width: 1200px; /* Max width to prevent content from stretching too wide on large screens */
     margin: auto; /* Center the container horizontally */
     padding: 20px; /* Add some padding inside the container */
     overflow: hidden; /* Clear floats within the container */
-    display: flex; /* Use flexbox for easier header layout */
-    justify-content: space-between; /* Space out left and right header content */
-    align-items: center; /* Vertically align items in the header */
 }
 
 /* ==== Header Styles ==== */
@@ -29,8 +27,18 @@ header {
     padding: 10px 0; /* Adjust padding for header */
     min-height: 70px; /* Minimum height for the header */
     border-bottom: #77aaff 3px solid; /* A subtle blue border at the bottom */
-    display: flex; /* Ensure header itself uses flex to center content */
-    align-items: center;
+    position: relative; /* Needed for absolute positioning of header elements */
+}
+
+/* --- Inner header container to manage content within the header --- */
+header .container {
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-between; /* Space out left and right content */
+    align-items: flex-start; /* Align items to the top to start with */
+    padding-top: 10px; /* Add some padding from the top edge of the header */
+    padding-bottom: 10px; /* Add some padding from the bottom edge */
+    position: relative; /* For z-index if elements overlap */
+    z-index: 10; /* Ensure header content is above other layers if any */
 }
 
 /* --- Styling for the left side of the header (Enterprise Name and Tagline) --- */
@@ -56,10 +64,19 @@ header h1 {
 
 /* --- Styling for the right side of the header (Buttons and Search) --- */
 .header-right {
+    position: absolute; /* Position absolutely relative to the header */
+    top: 10px; /* Align to the very top */
+    right: 10%; /* Align to the right edge of the container's 80% width */
+    transform: translateX(50%); /* Adjust to truly align to the edge of the *container* not the viewport */
+    /* Alternative for top-right alignment: */
+    /* top: 10px; */
+    /* right: 20px; */ /* Fixed distance from right edge of screen */
+
     display: flex;
     flex-direction: column; /* Stack buttons and search vertically */
     align-items: flex-end; /* Align items to the right */
     gap: 5px; /* Space between nav and search */
+    z-index: 20; /* Ensure these buttons are on top */
 }
 
 /* --- Navigation menu within the header-right --- */
@@ -106,7 +123,7 @@ header nav a:hover {
 /* --- Search button container --- */
 .search-container {
     text-align: right; /* Align search button to the right */
-    margin-top: 5px; /* A small gap from the buttons above */
+    /* margin-top: 5px; Removed as absolute positioning handles this */
 }
 
 /* --- Discreet search button styling --- */
@@ -257,23 +274,25 @@ footer {
 /* ==== Responsive Design (Media Queries) ==== */
 /* --- Adjust layout for smaller screens (e.g., tablets) --- */
 @media (max-width: 768px) {
-    .container {
-        width: 95%; /* Make container wider on smaller screens */
-        padding: 15px;
-        flex-direction: column; /* Stack header items vertically */
-        align-items: center; /* Center items when stacked */
-        text-align: center;
+    /* Reset header .container to simple flex-direction column for small screens */
+    header .container {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px; /* Reset padding for smaller screens */
+        padding-bottom: 10px;
+    }
+
+    .header-left {
+        margin-bottom: 15px; /* Add space between header left and right when stacked */
     }
 
     .header-left,
     .header-right {
         align-items: center; /* Center stacked elements */
         text-align: center;
+        position: static; /* Remove absolute positioning on small screens */
+        transform: none; /* Remove transform on small screens */
         width: 100%; /* Take full width */
-    }
-
-    .header-right {
-        margin-top: 15px; /* Add space between stacked header parts */
     }
 
     header nav ul {
@@ -333,11 +352,5 @@ footer {
     .btn {
         padding: 8px 15px;
         font-size: 0.9em;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group textarea {
-        width: calc(100% - 20px); /* Adjust width for very small screens */
     }
 }
