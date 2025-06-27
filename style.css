@@ -16,6 +16,9 @@ body {
     margin: auto; /* Center the container horizontally */
     padding: 20px; /* Add some padding inside the container */
     overflow: hidden; /* Clear floats within the container */
+    display: flex; /* Use flexbox for easier header layout */
+    justify-content: space-between; /* Space out left and right header content */
+    align-items: center; /* Vertically align items in the header */
 }
 
 /* ==== Header Styles ==== */
@@ -23,57 +26,105 @@ body {
 header {
     background: #333; /* Dark background for the header */
     color: #fff; /* White text color */
-    padding-top: 20px;
+    padding: 10px 0; /* Adjust padding for header */
     min-height: 70px; /* Minimum height for the header */
     border-bottom: #77aaff 3px solid; /* A subtle blue border at the bottom */
+    display: flex; /* Ensure header itself uses flex to center content */
+    align-items: center;
 }
 
-/* --- Styling for the website title/logo inside the header --- */
+/* --- Styling for the left side of the header (Enterprise Name and Tagline) --- */
+.header-left {
+    display: flex;
+    flex-direction: column; /* Stack name and tagline vertically */
+    align-items: flex-start; /* Align text to the left */
+}
+
 header h1 {
-    float: left; /* Align the title to the left */
     margin: 0;
     padding: 0;
     font-size: 2.2em; /* Larger font size for the title */
+    line-height: 1; /* Tighter line height for the title */
 }
 
-/* --- Styling for the navigation menu in the header --- */
-header nav {
-    float: right; /* Align the navigation to the right */
-    margin-top: 10px;
+/* --- Styling for the tagline under the enterprise name --- */
+.tagline {
+    margin: 5px 0 0 0; /* Adjust margin to be closer to the title */
+    font-size: 0.9em; /* Smaller text */
+    color: #bbb; /* Slightly lighter color for discretion */
 }
 
-/* --- List items within the navigation menu --- */
-header ul {
+/* --- Styling for the right side of the header (Buttons and Search) --- */
+.header-right {
+    display: flex;
+    flex-direction: column; /* Stack buttons and search vertically */
+    align-items: flex-end; /* Align items to the right */
+    gap: 5px; /* Space between nav and search */
+}
+
+/* --- Navigation menu within the header-right --- */
+header nav ul {
     margin: 0;
     padding: 0;
     list-style: none; /* Remove bullet points from list items */
+    display: flex; /* Arrange nav items horizontally */
+    gap: 10px; /* Space between nav buttons */
 }
 
-/* --- Individual links within the navigation --- */
-header li {
-    display: inline; /* Make list items display horizontally */
-    padding: 0 15px; /* Spacing between navigation items */
+/* --- Individual links within the navigation (used for Login and Menu buttons) --- */
+header nav li {
+    display: inline-block; /* Ensure they are block-level for button styling */
+    padding: 0; /* No extra padding here as button handles it */
 }
 
-/* --- Styling for navigation links --- */
-header a {
+/* --- Styling for navigation links (Login/Menu buttons) --- */
+header nav a {
     color: #fff; /* White link color */
     text-decoration: none; /* Remove underline from links */
     text-transform: uppercase; /* Convert text to uppercase */
-    font-size: 16px;
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    font-size: 1em; /* Adjust font size for buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    padding: 8px 15px; /* Padding for the button look */
+    border-radius: 5px; /* Rounded corners for buttons */
+    background-color: #555; /* Default button background */
+    display: flex; /* For icon alignment */
+    align-items: center;
+    gap: 5px; /* Space between text and icon */
 }
 
 /* --- Hover effect for navigation links --- */
-header a:hover {
-    color: #77aaff; /* Change color on hover */
-    font-weight: bold; /* Make text bold on hover */
+header nav a:hover {
+    background-color: #77aaff; /* Change background color on hover */
+    color: #fff;
 }
 
-/* --- Style for the current active page link --- */
-header .current a {
-    color: #77aaff; /* Highlight the current page */
-    font-weight: bold;
+/* --- Specific styling for the Menu button if needed --- */
+.menu-btn {
+    /* Potentially different styling for menu button */
+}
+
+/* --- Search button container --- */
+.search-container {
+    text-align: right; /* Align search button to the right */
+    margin-top: 5px; /* A small gap from the buttons above */
+}
+
+/* --- Discreet search button styling --- */
+.search-btn {
+    background: none; /* No background */
+    border: none; /* No border */
+    color: #bbb; /* Discreet light grey color */
+    font-size: 0.9em; /* Smaller font size */
+    cursor: pointer;
+    padding: 5px 10px; /* Small padding */
+    transition: color 0.3s ease;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    gap: 5px; /* Space between text and icon */
+}
+
+.search-btn:hover {
+    color: #fff; /* White color on hover for visibility */
 }
 
 /* ==== Main Content Section Styles ==== */
@@ -84,6 +135,39 @@ section {
     background: #fff; /* White background for content sections */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
     border-radius: 8px; /* Slightly rounded corners */
+}
+
+/* --- Hero Banner specific styles --- */
+#hero-banner {
+    text-align: center;
+    background: linear-gradient(to right, #77aaff, #5588cc); /* Blue gradient */
+    color: #fff;
+    padding: 50px 20px;
+    border-radius: 0; /* Remove rounded corners for full width */
+    margin-bottom: 30px;
+}
+
+#hero-banner h2 {
+    color: #fff;
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+#hero-banner p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+#hero-banner .btn {
+    background: #fff;
+    color: #5588cc;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 25px;
+}
+
+#hero-banner .btn:hover {
+    background: #eee;
 }
 
 /* --- Heading styles within content sections --- */
@@ -100,15 +184,28 @@ section p {
 }
 
 /* ==== Article/Card Styles (Example for blog posts or service descriptions) ==== */
+/* --- Grid for features/cards --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between cards */
+    padding: 0 20px; /* Padding for the grid inside the section */
+}
+
 /* --- Styling for individual content blocks/cards --- */
 .article-card {
     background: #f9f9f9; /* Lighter background for cards */
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Remove bottom margin as gap handles spacing */
     border: 1px solid #ddd; /* Light border */
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.article-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
 }
 
 /* --- Heading for cards --- */
@@ -125,8 +222,8 @@ section p {
     margin-bottom: 15px;
 }
 
-/* ==== Button Styles ==== */
-/* --- General button styling --- */
+/* ==== Button Styles (General) ==== */
+/* --- General button styling (used for Learn More, Read More) --- */
 .btn {
     display: inline-block; /* Allow padding and margin */
     background: #77aaff; /* Blue background */
@@ -145,46 +242,6 @@ section p {
     background: #5588cc; /* Darker blue on hover */
 }
 
-/* ==== Form Styles ==== */
-/* --- Basic form styling --- */
-form {
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    max-width: 500px;
-    margin: 20px auto; /* Center the form */
-}
-
-/* --- Styling for form groups (label + input) --- */
-.form-group {
-    margin-bottom: 15px;
-}
-
-/* --- Labels for form inputs --- */
-.form-group label {
-    display: block; /* Make labels take full width */
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-}
-
-/* --- Styling for text inputs and textareas --- */
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group textarea {
-    width: calc(100% - 22px); /* Full width minus padding and border */
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-/* --- Specific styling for textarea --- */
-.form-group textarea {
-    resize: vertical; /* Allow vertical resizing */
-    min-height: 100px;
-}
 
 /* ==== Footer Styles ==== */
 /* --- Styling for the main footer section --- */
@@ -197,28 +254,45 @@ footer {
     border-top: #77aaff 3px solid; /* Border matching the header */
 }
 
-/* ==== Responsive Design (Basic Media Queries) ==== */
+/* ==== Responsive Design (Media Queries) ==== */
 /* --- Adjust layout for smaller screens (e.g., tablets) --- */
 @media (max-width: 768px) {
     .container {
         width: 95%; /* Make container wider on smaller screens */
         padding: 15px;
+        flex-direction: column; /* Stack header items vertically */
+        align-items: center; /* Center items when stacked */
+        text-align: center;
     }
 
-    header h1,
-    header nav,
-    header li {
-        float: none; /* Remove floats to stack elements */
-        text-align: center; /* Center text */
+    .header-left,
+    .header-right {
+        align-items: center; /* Center stacked elements */
+        text-align: center;
+        width: 100%; /* Take full width */
+    }
+
+    .header-right {
+        margin-top: 15px; /* Add space between stacked header parts */
     }
 
     header nav ul {
-        padding-top: 10px; /* Add space above stacked nav items */
+        flex-direction: column; /* Stack nav buttons vertically */
+        gap: 8px; /* Reduce gap */
     }
 
-    header li {
-        display: block; /* Make navigation items stack vertically */
-        margin-bottom: 5px; /* Add space between stacked nav items */
+    .search-container {
+        text-align: center; /* Center the search button */
+        margin-top: 10px;
+    }
+
+    #hero-banner h2 {
+        font-size: 2.5em;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Stack cards on very small screens */
+        padding: 0 15px;
     }
 
     section {
@@ -238,6 +312,18 @@ footer {
 
     header h1 {
         font-size: 1.8em;
+    }
+
+    .tagline {
+        font-size: 0.8em;
+    }
+
+    #hero-banner h2 {
+        font-size: 2em;
+    }
+
+    #hero-banner p {
+        font-size: 1em;
     }
 
     section h2 {
