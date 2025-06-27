@@ -41,12 +41,11 @@ header {
 }
 
 .header-left {
-    position: absolute; /* Keep absolute positioning */
-    bottom: 20px; /* Align 20px from the bottom of the header */
-    left: 20px; /* Keep 20px from the left */
+    position: absolute; /* Position relative to the header */
+    top: 20px; /* Distance from the top */
+    left: 20px; /* Distance from the left */
+    transform: translateY(0); /* Reset transform */
     text-align: left; /* Align text to the left */
-    top: auto; /* Ensure it's not conflicting with 'top' if previously set */
-    transform: none; /* Remove any previous transform that might offset it */
 }
 
 .header-right {
