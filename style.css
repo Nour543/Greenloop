@@ -90,14 +90,16 @@ header nav ul li a:hover {
 
 /* --- Buttons in the header for login/menu --- */
 .btn {
-    display: inline-block; /* Allow padding and margin */
-    background-color: #28a745; /* Green button background */
-    color: white; /* White text on button */
-    padding: 10px 15px; /* Padding inside the button */
-    border-radius: 5px; /* Rounded corners */
-    text-decoration: none; /* Remove underline */
+    background-color: #007bff; /* Blue button for actions */
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
     font-weight: 600;
-    transition: background-color 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease;
+    /* ==== New addition to ensure clickability ==== */
+    position: relative; /* Essential for z-index to work */
+    z-index: 10;       /* Put the button on top of potential overlays */
+    pointer-events: auto; /* Ensure it receives click events */
 }
 
 .btn:hover {
