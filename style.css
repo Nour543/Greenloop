@@ -163,8 +163,9 @@ section h2 {
 
 /* ==== Features Grid Styles ==== */
 .features-grid {
-    display: grid; /* Use CSS Grid for layout */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    display: flex; /* Change from grid to flex */
+    justify-content: center; /* Center the items horizontally */
+    flex-wrap: wrap; /* Allow items to wrap if screen is too small */
     gap: 25px; /* Space between grid items */
     padding: 0 20px;
 }
