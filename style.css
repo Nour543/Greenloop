@@ -21,14 +21,25 @@ body {
 
 /* ==== Header Styles ==== */
 /* --- Styling for the main header section --- */
+/* ==== Header Styles ==== */
+/* --- Styling for the main header section --- */
 header {
-    background: #333; /* Dark background for the header */
-    color: #fff; /* White text color */
+    /* --- REMOVE these lines if they are present: --- */
+    /* background: #333; */
+    /* min-height: 70px; */
+
+    /* ==== ADD these lines for background image ==== */
+    background: url('banner.jpg') no-repeat center center/cover;
+    height: 150px; /* Adjust this height as needed to fit your image/design */
+    display: flex; /* Keep this to help align content vertically */
+    align-items: center; /* Keep this to center content vertically */
+
+    color: #fff; /* White text color (assuming your image is dark enough for white text) */
     padding: 10px 0; /* Adjust padding for header */
-    min-height: 70px; /* Minimum height for the header */
     border-bottom: #77aaff 3px solid; /* A subtle blue border at the bottom */
     position: relative; /* Needed for absolute positioning of header elements */
 }
+
 
 /* --- Inner header container to manage content within the header --- */
 header .container {
