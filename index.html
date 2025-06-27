@@ -11,10 +11,15 @@
 
     <header>
         <div class="container">
-            <div class="header-left">
-                <h1>GREENLOOP</h1>
-                <p class="tagline">Start With Nothing, Build Everything ~ </p>
-            </div>
+            .header-left {
+            position: absolute; /* Keep absolute positioning */
+            bottom: 20px; /* Align 20px from the bottom of the header */
+            left: 20px; /* Keep 20px from the left */
+            text-align: left; /* Align text to the left */
+            /* Remove or comment out 'top' and 'transform' properties if they exist */
+            top: auto; /* Ensure it's not conflicting with 'top' if previously set */
+            transform: none; /* Remove any previous transform that might offset it */
+        }
             <div class="header-right">
                 <nav>
                     <ul>
