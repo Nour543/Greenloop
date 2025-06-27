@@ -1,0 +1,257 @@
+/* ==== General Styles ==== */
+/* --- Apply basic styles to the body for a consistent base --- */
+body {
+    font-family: 'Arial', sans-serif; /* A common, readable font */
+    margin: 0; /* Remove default margin from the body */
+    padding: 0; /* Remove default padding */
+    background-color: #f4f4f4; /* Light grey background for the whole page */
+    color: #333; /* Dark grey text color for general content */
+    line-height: 1.6; /* Improve readability of text */
+}
+
+/* --- Container to center content and add padding --- */
+.container {
+    width: 80%; /* Set a responsive width */
+    max-width: 1200px; /* Max width to prevent content from stretching too wide on large screens */
+    margin: auto; /* Center the container horizontally */
+    padding: 20px; /* Add some padding inside the container */
+    overflow: hidden; /* Clear floats within the container */
+}
+
+/* ==== Header Styles ==== */
+/* --- Styling for the main header section --- */
+header {
+    background: #333; /* Dark background for the header */
+    color: #fff; /* White text color */
+    padding-top: 20px;
+    min-height: 70px; /* Minimum height for the header */
+    border-bottom: #77aaff 3px solid; /* A subtle blue border at the bottom */
+}
+
+/* --- Styling for the website title/logo inside the header --- */
+header h1 {
+    float: left; /* Align the title to the left */
+    margin: 0;
+    padding: 0;
+    font-size: 2.2em; /* Larger font size for the title */
+}
+
+/* --- Styling for the navigation menu in the header --- */
+header nav {
+    float: right; /* Align the navigation to the right */
+    margin-top: 10px;
+}
+
+/* --- List items within the navigation menu --- */
+header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove bullet points from list items */
+}
+
+/* --- Individual links within the navigation --- */
+header li {
+    display: inline; /* Make list items display horizontally */
+    padding: 0 15px; /* Spacing between navigation items */
+}
+
+/* --- Styling for navigation links --- */
+header a {
+    color: #fff; /* White link color */
+    text-decoration: none; /* Remove underline from links */
+    text-transform: uppercase; /* Convert text to uppercase */
+    font-size: 16px;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* --- Hover effect for navigation links --- */
+header a:hover {
+    color: #77aaff; /* Change color on hover */
+    font-weight: bold; /* Make text bold on hover */
+}
+
+/* --- Style for the current active page link --- */
+header .current a {
+    color: #77aaff; /* Highlight the current page */
+    font-weight: bold;
+}
+
+/* ==== Main Content Section Styles ==== */
+/* --- Basic styling for main content sections --- */
+section {
+    padding: 20px 0;
+    margin-bottom: 20px;
+    background: #fff; /* White background for content sections */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    border-radius: 8px; /* Slightly rounded corners */
+}
+
+/* --- Heading styles within content sections --- */
+section h2 {
+    color: #444;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+/* --- Paragraph styling within sections --- */
+section p {
+    margin-bottom: 15px;
+}
+
+/* ==== Article/Card Styles (Example for blog posts or service descriptions) ==== */
+/* --- Styling for individual content blocks/cards --- */
+.article-card {
+    background: #f9f9f9; /* Lighter background for cards */
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* --- Heading for cards --- */
+.article-card h3 {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* --- Image styling within cards --- */
+.article-card img {
+    max-width: 100%; /* Ensure images don't overflow their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* ==== Button Styles ==== */
+/* --- General button styling --- */
+.btn {
+    display: inline-block; /* Allow padding and margin */
+    background: #77aaff; /* Blue background */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Indicate it's clickable */
+    font-size: 1em;
+    text-decoration: none; /* Remove underline for anchor buttons */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* --- Button hover effect --- */
+.btn:hover {
+    background: #5588cc; /* Darker blue on hover */
+}
+
+/* ==== Form Styles ==== */
+/* --- Basic form styling --- */
+form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 20px auto; /* Center the form */
+}
+
+/* --- Styling for form groups (label + input) --- */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* --- Labels for form inputs --- */
+.form-group label {
+    display: block; /* Make labels take full width */
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* --- Styling for text inputs and textareas --- */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: calc(100% - 22px); /* Full width minus padding and border */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* --- Specific styling for textarea --- */
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+}
+
+/* ==== Footer Styles ==== */
+/* --- Styling for the main footer section --- */
+footer {
+    padding: 20px;
+    margin-top: 30px;
+    color: #fff;
+    background-color: #333;
+    text-align: center;
+    border-top: #77aaff 3px solid; /* Border matching the header */
+}
+
+/* ==== Responsive Design (Basic Media Queries) ==== */
+/* --- Adjust layout for smaller screens (e.g., tablets) --- */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Make container wider on smaller screens */
+        padding: 15px;
+    }
+
+    header h1,
+    header nav,
+    header li {
+        float: none; /* Remove floats to stack elements */
+        text-align: center; /* Center text */
+    }
+
+    header nav ul {
+        padding-top: 10px; /* Add space above stacked nav items */
+    }
+
+    header li {
+        display: block; /* Make navigation items stack vertically */
+        margin-bottom: 5px; /* Add space between stacked nav items */
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    .article-card {
+        padding: 15px;
+    }
+}
+
+/* --- Adjust layout for very small screens (e.g., mobile phones) --- */
+@media (max-width: 480px) {
+    body {
+        font-size: 0.9em; /* Slightly smaller base font size */
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: calc(100% - 20px); /* Adjust width for very small screens */
+    }
+}
