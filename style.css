@@ -27,213 +27,155 @@ body {
 /* --- Styling for the main header section --- */
 header {
     /* ==== Background image and height for the banner ==== */
-    background: url('banner2.jpg') no-repeat center center/cover;
-    height: 150px; /* Adjust this height as needed to fit your image/design */
-    display: flex; /* Keep this to help align content vertically */
-    align-items: center; /* Keep this to center content vertically */
-
-    color: #fff; /* White text color (assuming your image is dark enough for white text) */
-    padding: 10px 0; /* Adjust padding for header */
-    border-bottom: #A0C4B4 3px solid; /* Softer green border at the bottom */
-    position: relative; /* Needed for absolute positioning of header elements */
+    background-image: url('banner2.jpg'); /* Explicitly define background image */
+    background-repeat: no-repeat; /* Ensure image doesn't repeat */
+    background-position: center center; /* Center the background image */
+    background-size: cover; /* Cover the entire header area */
+    height: 60vh; /* Make the header a bit taller to showcase the banner */
+    color: white; /* White text for header content */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Center text within the header */
+    position: relative; /* Needed for absolute positioning of child elements if any */
 }
 
-
-/* --- Inner header container to manage content within the header --- */
-header .container {
-    display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: space-between; /* Space out left and right content */
-    align-items: flex-start; /* Align items to the top to start with */
-    padding-top: 10px; /* Add some padding from the top edge of the header */
-    padding-bottom: 10px; /* Add some padding from the bottom edge */
-    position: relative; /* For z-index if elements overlap */
-    z-index: 10; /* Ensure header content is above other layers if any */
-}
-
-/* --- Styling for the left side of the header (Enterprise Name and Tagline) --- */
 .header-left {
+    position: absolute; /* Position relative to the header */
+    top: 20px; /* Distance from the top */
+    left: 20px; /* Distance from the left */
+    transform: translateY(0); /* Reset transform */
+    text-align: left; /* Align text to the left */
+}
+
+.header-right {
+    position: absolute; /* Position relative to the header */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
     display: flex;
-    flex-direction: column; /* Stack name and tagline vertically */
-    align-items: flex-start; /* Align text to the left */
+    gap: 15px; /* Space between elements */
+    align-items: center;
 }
 
 header h1 {
-    font-family: 'Poppins', sans-serif; /* Prettier heading font */
-    margin: 0;
-    padding: 0;
-    font-size: 2.2em; /* Larger font size for the title */
-    line-height: 1; /* Tighter line height for the title */
+    margin: 0; /* Remove default margin for heading */
+    font-family: 'Poppins', sans-serif; /* Prettier font for headings */
+    font-size: 2.5em; /* Larger font size for main heading */
 }
 
-/* --- Styling for the tagline under the enterprise name --- */
 .tagline {
-    font-family: 'Open Sans', sans-serif; /* Use body font for tagline */
-    margin: 5px 0 0 0; /* Adjust margin to be closer to the title */
-    font-size: 0.9em; /* Smaller text */
-    color: #ccc; /* Slightly lighter color for discretion, adjusted for black background */
+    font-size: 1.1em;
+    font-style: italic;
+    margin-top: 5px;
 }
 
-/* --- Styling for the right side of the header (Buttons and Search) --- */
-.header-right {
-    position: absolute; /* Position absolutely relative to the header */
-    top: 10px; /* Align to the very top */
-    right: 10%; /* Align to the right edge of the container's 80% width */
-    transform: translateX(50%); /* Adjust to truly align to the edge of the *container* not the viewport */
-    /* Alternative for top-right alignment: */
-    /* top: 10px; */
-    /* right: 20px; */ /* Fixed distance from right edge of screen */
-
-    display: flex;
-    flex-direction: column; /* Stack buttons and search vertically */
-    align-items: flex-end; /* Align items to the right */
-    gap: 5px; /* Space between nav and search */
-    z-index: 20; /* Ensure these buttons are on top */
-}
-
-/* --- Navigation menu within the header-right --- */
 header nav ul {
+    list-style: none; /* Remove bullet points from list */
     margin: 0;
     padding: 0;
-    list-style: none; /* Remove bullet points from list items */
-    display: flex; /* Arrange nav items horizontally */
-    gap: 10px; /* Space between nav buttons */
+    display: flex; /* Arrange nav items in a row */
+    gap: 15px; /* Space between nav items */
 }
 
-/* --- Individual links within the navigation (used for Login and Menu buttons) --- */
-header nav li {
-    display: inline-block; /* Ensure they are block-level for button styling */
-    padding: 0; /* No extra padding here as button handles it */
-}
-
-/* --- Styling for navigation links (Login/Menu buttons) --- */
-header nav a {
-    color: #fff; /* White link color */
+header nav ul li a {
+    color: white; /* White text for nav links */
     text-decoration: none; /* Remove underline from links */
-    text-transform: uppercase; /* Convert text to uppercase */
-    font-size: 1em; /* Adjust font size for buttons */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    padding: 8px 15px; /* Padding for the button look */
-    border-radius: 5px; /* Rounded corners for buttons */
-    background-color: rgba(51, 51, 51, 0.7); /* Slightly transparent dark grey for buttons */
-    display: flex; /* For icon alignment */
-    align-items: center;
-    gap: 5px; /* Space between text and icon */
-    border: 1px solid #666; /* Subtle border for button definition */
+    font-weight: 600; /* Bolder text for nav links */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-/* --- Hover effect for navigation links --- */
-header nav a:hover {
-    background-color: #6B9E8C; /* Darker soft green on hover */
-    color: #fff;
-    border-color: #6B9E8C;
+header nav ul li a:hover {
+    color: #e0e0e0; /* Lighter white on hover */
 }
 
-/* --- Specific styling for the Menu button if needed --- */
-.menu-btn {
-    /* Potentially different styling for menu button */
+/* --- Buttons in the header for login/menu --- */
+.btn {
+    display: inline-block; /* Allow padding and margin */
+    background-color: #28a745; /* Green button background */
+    color: white; /* White text on button */
+    padding: 10px 15px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: 600;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-/* --- Search button container --- */
+.btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
 .search-container {
-    text-align: right; /* Align search button to the right */
+    display: inline-block; /* Allow search elements to align */
 }
 
-/* --- Discreet search button styling --- */
 .search-btn {
-    background: none; /* No background */
-    border: none; /* No border */
-    color: #ccc; /* Discreet lighter grey color, adjusted for black background */
-    font-size: 0.9em; /* Smaller font size */
+    background: none; /* No background for the search button */
+    border: 2px solid white; /* White border */
+    color: white; /* White icon */
+    padding: 8px 12px;
+    border-radius: 5px;
     cursor: pointer;
-    padding: 5px 10px; /* Small padding */
-    transition: color 0.3s ease;
-    display: flex; /* For icon alignment */
-    align-items: center;
-    gap: 5px; /* Space between text and icon */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .search-btn:hover {
-    color: #A0C4B4; /* Softer green color on hover for visibility */
+    background-color: white;
+    color: #28a745;
 }
 
-/* ==== Main Content Section Styles ==== */
-/* --- Basic styling for main content sections --- */
-section {
-    padding: 20px 0;
-    margin-bottom: 20px;
-    background: #fff; /* White background for content sections */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-    border-radius: 8px; /* Slightly rounded corners */
-}
-
-/* --- Hero Banner specific styles --- */
+/* --- Hero Banner Content --- */
 #hero-banner {
+    padding: 60px 20px;
+    background-color: #f8f8f8; /* Light background for hero section */
     text-align: center;
-    background: linear-gradient(to right, #A0C4B4, #6B9E8C); /* Soft green gradient */
-    color: #fff;
-    padding: 50px 20px;
-    border-radius: 0; /* Remove rounded corners for full width */
-    margin-bottom: 30px;
 }
 
 #hero-banner h2 {
-    font-family: 'Poppins', sans-serif; /* Prettier heading font */
-    color: #fff;
+    font-family: 'Poppins', sans-serif;
     font-size: 3em;
+    color: #28a745;
     margin-bottom: 10px;
 }
 
 #hero-banner p {
-    font-family: 'Open Sans', sans-serif; /* Prettier body font */
     font-size: 1.2em;
-    margin-bottom: 30px;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 30px;
 }
 
-#hero-banner .btn {
-    background: #fff;
-    color: #6B9E8C; /* Text color matching secondary soft green */
-    font-weight: bold;
-    padding: 12px 25px;
-    border-radius: 25px;
+/* ==== Section Styles ==== */
+section {
+    padding: 40px 20px; /* Vertical and horizontal padding for sections */
+    margin-bottom: 20px; /* Space between sections */
+    background-color: white; /* White background for sections */
+    border-radius: 8px; /* Slightly rounded corners for sections */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-#hero-banner .btn:hover {
-    background: #eee;
-    color: #5a8a7a; /* Slightly darker soft green on hover */
-}
-
-/* --- Heading styles within content sections --- */
 section h2 {
-    font-family: 'Poppins', sans-serif; /* Prettier heading font */
-    color: #444;
+    font-family: 'Poppins', sans-serif;
+    color: #28a745; /* Green heading color */
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 2em;
+    margin-bottom: 30px;
+    font-size: 2.2em;
 }
 
-/* --- Paragraph styling within sections --- */
-section p {
-    margin-bottom: 15px;
-}
-
-/* ==== Article/Card Styles (Example for blog posts or service descriptions) ==== */
-/* --- Grid for features/cards --- */
+/* ==== Features Grid Styles ==== */
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Space between cards */
-    padding: 0 20px; /* Padding for the grid inside the section */
+    display: grid; /* Use CSS Grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    gap: 25px; /* Space between grid items */
+    padding: 0 20px;
 }
 
-/* --- Styling for individual content blocks/cards --- */
 .article-card {
-    background: #f9f9f9; /* Lighter background for cards */
+    background-color: #ffffff; /* White background for cards */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
     padding: 20px;
-    margin-bottom: 0; /* Remove bottom margin as gap handles spacing */
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 5px;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
     transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
@@ -241,75 +183,106 @@ section p {
     transform: translateY(-5px); /* Lift card on hover */
 }
 
-/* --- Heading for cards --- */
-.article-card h3 {
-    font-family: 'Poppins', sans-serif; /* Prettier heading font */
-    color: #555;
-    margin-bottom: 10px;
-}
-
-/* --- Image styling within cards --- */
 .article-card img {
-    max-width: 100%; /* Ensure images don't overflow their container */
+    max-width: 100%; /* Ensure images are responsive */
     height: auto; /* Maintain aspect ratio */
-    border-radius: 4px;
+    border-radius: 5px; /* Slightly rounded image corners */
     margin-bottom: 15px;
 }
 
-/* ==== Button Styles (General) ==== */
-/* --- General button styling (used for Learn More, Read More) --- */
-.btn {
-    display: inline-block; /* Allow padding and margin */
-    background: #A0C4B4; /* Soft green background */
-    color: #fff; /* White text */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer; /* Indicate it's clickable */
-    font-size: 1em;
-    text-decoration: none; /* Remove underline for anchor buttons */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+.article-card h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.5em;
 }
 
-/* --- Button hover effect --- */
-.btn:hover {
-    background: #6B9E8C; /* Darker soft green on hover */
+.article-card p {
+    color: #666;
+    margin-bottom: 20px;
 }
 
+.article-card .btn {
+    background-color: #007bff; /* Blue button for actions */
+    padding: 8px 12px;
+}
+
+.article-card .btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* ==== About Us Section Styles ==== */
+#about-us p {
+    text-align: center;
+    max-width: 800px;
+    margin: 15px auto;
+    color: #555;
+}
 
 /* ==== Footer Styles ==== */
-/* --- Styling for the main footer section --- */
 footer {
-    padding: 20px;
-    margin-top: 30px;
-    color: #fff;
-    background-color: #333;
+    background-color: #333; /* Dark grey background for footer */
+    color: white; /* White text */
     text-align: center;
-    border-top: #A0C4B4 3px solid; /* Soft green border matching the header */
+    padding: 20px;
+    margin-top: 30px; /* Space above the footer */
+    border-top: 5px solid #28a745; /* Green top border */
 }
 
-/* ==== Responsive Design (Media Queries) ==== */
-/* --- Adjust layout for smaller screens (e.g., tablets) --- */
-@media (max-width: 768px) {
-    /* Reset header .container to simple flex-direction column for small screens */
-    header .container {
-        flex-direction: column;
-        align-items: center;
-        padding-top: 10px; /* Reset padding for smaller screens */
-        padding-bottom: 10px;
+/* ==== Responsive Design ==== */
+/* --- Adjust layout for tablets and smaller desktops --- */
+@media (max-width: 992px) {
+    .container {
+        width: 90%; /* Increase width for smaller screens */
+    }
+
+    header {
+        height: 50vh; /* Slightly smaller header height */
     }
 
     .header-left {
-        margin-bottom: 15px; /* Add space between header left and right when stacked */
+        top: 15px;
+        left: 15px;
+    }
+
+    .header-right {
+        top: 15px;
+        right: 15px;
+        flex-direction: column; /* Stack nav and search buttons */
+        align-items: flex-end; /* Align to the right */
+        gap: 10px;
+    }
+
+    header nav ul {
+        gap: 10px; /* Reduce gap in nav */
+    }
+
+    #hero-banner h2 {
+        font-size: 2.8em;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust min width */
+    }
+}
+
+/* --- Adjust layout for mobile devices --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack header elements vertically */
+        height: auto; /* Auto height for stacked content */
+        padding-top: 15px;
+        padding-bottom: 10px;
     }
 
     .header-left,
     .header-right {
-        align-items: center; /* Center stacked elements */
-        text-align: center;
         position: static; /* Remove absolute positioning on small screens */
         transform: none; /* Remove transform on small screens */
         width: 100%; /* Take full width */
+        align-items: center; /* Center stacked elements */
+        text-align: center;
+        margin-bottom: 15px; /* Add space between header left and right when stacked */
     }
 
     header nav ul {
@@ -351,7 +324,17 @@ footer {
     }
 
     .tagline {
-        font-size: 0.8em;
+        font-size: 0.9em;
+    }
+
+    header nav ul li a {
+        font-size: 0.9em;
+        padding: 8px 12px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.9em;
     }
 
     #hero-banner h2 {
@@ -366,8 +349,7 @@ footer {
         font-size: 1.8em;
     }
 
-    .btn {
-        padding: 8px 15px;
-        font-size: 0.9em;
+    .article-card h3 {
+        font-size: 1.3em;
     }
 }
