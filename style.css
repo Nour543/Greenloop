@@ -27,14 +27,14 @@ body {
 /* --- Styling for the main header section --- */
 header {
     /* ==== Background image and height for the banner ==== */
-    background: url('banner2.jpg') no-repeat center center/cover;
+    background: url('5978624549849254475.jpg') no-repeat center center/cover;
     height: 150px; /* Adjust this height as needed to fit your image/design */
     display: flex; /* Keep this to help align content vertically */
     align-items: center; /* Keep this to center content vertically */
 
     color: #fff; /* White text color (assuming your image is dark enough for white text) */
     padding: 10px 0; /* Adjust padding for header */
-    border-bottom: #80D824 3px solid; /* Green border at the bottom */
+    border-bottom: #A0C4B4 3px solid; /* Softer green border at the bottom */
     position: relative; /* Needed for absolute positioning of header elements */
 }
 
@@ -123,9 +123,9 @@ header nav a {
 
 /* --- Hover effect for navigation links --- */
 header nav a:hover {
-    background-color: #33A387; /* Darker green on hover */
+    background-color: #6B9E8C; /* Darker soft green on hover */
     color: #fff;
-    border-color: #33A387;
+    border-color: #6B9E8C;
 }
 
 /* --- Specific styling for the Menu button if needed --- */
@@ -136,7 +136,6 @@ header nav a:hover {
 /* --- Search button container --- */
 .search-container {
     text-align: right; /* Align search button to the right */
-    /* margin-top: 5px; Removed as absolute positioning handles this */
 }
 
 /* --- Discreet search button styling --- */
@@ -154,7 +153,7 @@ header nav a:hover {
 }
 
 .search-btn:hover {
-    color: #80D824; /* Green color on hover for visibility */
+    color: #A0C4B4; /* Softer green color on hover for visibility */
 }
 
 /* ==== Main Content Section Styles ==== */
@@ -170,7 +169,7 @@ section {
 /* --- Hero Banner specific styles --- */
 #hero-banner {
     text-align: center;
-    background: linear-gradient(to right, #80D824, #33A387); /* Green gradient */
+    background: linear-gradient(to right, #A0C4B4, #6B9E8C); /* Soft green gradient */
     color: #fff;
     padding: 50px 20px;
     border-radius: 0; /* Remove rounded corners for full width */
@@ -192,7 +191,7 @@ section {
 
 #hero-banner .btn {
     background: #fff;
-    color: #33A387; /* Text color matching secondary green */
+    color: #6B9E8C; /* Text color matching secondary soft green */
     font-weight: bold;
     padding: 12px 25px;
     border-radius: 25px;
@@ -200,7 +199,7 @@ section {
 
 #hero-banner .btn:hover {
     background: #eee;
-    color: #2a8a77; /* Slightly darker green on hover */
+    color: #5a8a7a; /* Slightly darker soft green on hover */
 }
 
 /* --- Heading styles within content sections --- */
@@ -261,7 +260,7 @@ section p {
 /* --- General button styling (used for Learn More, Read More) --- */
 .btn {
     display: inline-block; /* Allow padding and margin */
-    background: #80D824; /* Green background */
+    background: #A0C4B4; /* Soft green background */
     color: #fff; /* White text */
     padding: 10px 20px;
     border: none;
@@ -274,7 +273,7 @@ section p {
 
 /* --- Button hover effect --- */
 .btn:hover {
-    background: #33A387; /* Darker green on hover */
+    background: #6B9E8C; /* Darker soft green on hover */
 }
 
 
@@ -286,7 +285,7 @@ footer {
     color: #fff;
     background-color: #333;
     text-align: center;
-    border-top: #80D824 3px solid; /* Green border matching the header */
+    border-top: #A0C4B4 3px solid; /* Soft green border matching the header */
 }
 
 /* ==== Responsive Design (Media Queries) ==== */
