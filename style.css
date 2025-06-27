@@ -27,7 +27,7 @@ body {
 /* --- Styling for the main header section --- */
 header {
     /* ==== Background image and height for the banner ==== */
-    background: url('5978624549849254475.jpg') no-repeat center center/cover;
+    background: url('header2.jpg') no-repeat center center/cover;
     height: 150px; /* Adjust this height as needed to fit your image/design */
     display: flex; /* Keep this to help align content vertically */
     align-items: center; /* Keep this to center content vertically */
