@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREENLOOP - Recycled Aggregates</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ==== Product Page Specific Styles ==== */
+        /* --- Styles for the main content area of the product page --- */
+        .product-content {
+            text-align: center; /* Center align content within this section */
+            margin-top: 40px; /* Space from the top */
+        }
+
+        /* --- Styles for the container holding the option buttons --- */
+        .option-buttons {
+            display: flex; /* Use Flexbox for horizontal alignment */
+            justify-content: center; /* Center the buttons horizontally within their container */
+            gap: 20px; /* Space between the buttons */
+            margin-bottom: 30px; /* Space below the buttons */
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line on smaller screens */
+        }
+
+        /* --- Styles for the information display area, hidden by default --- */
+        .info-display {
+            background-color: #e9f7ef; /* Light green background */
+            border: 1px solid #28a745; /* Green border */
+            border-radius: 8px; /* Rounded corners for the info box */
+            padding: 25px; /* Inner padding */
+            margin: 0 auto; /* Center the info box horizontally */
+            max-width: 600px; /* Max width to prevent it from stretching too wide */
+            text-align: left; /* Align text to the left within the info box */
+            display: none; /* Initially hidden */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* --- Styles for the unordered list inside the info display --- */
+        .info-display ul {
+            list-style: none; /* Remove default bullet points */
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+
+        /* --- Styles for list items inside the info display --- */
+        .info-display ul li {
+            margin-bottom: 10px; /* Space between list items */
+            color: #333; /* Dark grey text color */
+            font-size: 1.1em; /* Slightly larger font size */
+        }
+
+        /* --- Styles for strong/bold text within list items (e.g., labels like 'Origin:') --- */
+        .info-display ul li strong {
+            color: #28a745; /* Green color for emphasis */
+        }
+
+        /* --- Styles for certification download links --- */
+        .info-display ul li a {
+            color: #007bff; /* Blue color for links */
+            text-decoration: none; /* Remove underline from links */
+            margin-right: 10px; /* Space between links */
+        }
+
+        /* --- Hover effect for certification download links --- */
+        .info-display ul li a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* ==== Responsive Adjustments for Product Pages ==== */
+        @media (max-width: 768px) {
+            .option-buttons {
+                flex-direction: column; /* Stack buttons vertically on small screens */
+                gap: 10px; /* Reduce gap when stacked */
+                align-items: center; /* Center stacked buttons */
+            }
+
+            .info-display {
+                padding: 15px; /* Reduce padding on small screens */
+                margin: 0 15px; /* Add horizontal margin to prevent touching edges */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-display ul li {
+                font-size: 1em; /* Slightly smaller font size on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-left">
+                <h1>GREENLOOP</h1>
+                <p class="tagline">Start With Nothing, Build Everything ~ </p>
+            </div>
+            <div class="header-right">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="btn">Back to Home</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="product-details">
+            <div class="container product-content">
+                <h2>Recycled Aggregates Details</h2>
+                <p>Select an option below to view its details.</p>
+
+                <div class="option-buttons">
+                    <button class="btn" onclick="displayInfo()">Option 1</button>
+                    <button class="btn" onclick="displayInfo()">Option 2</button>
+                    <button class="btn" onclick="displayInfo()">Option 3</button>
+                </div>
+
+                <div id="infoDisplay" class="info-display">
+                    <ul>
+                        <li><strong>Origin:</strong> X y z</li>
+                        <li><strong>Treatments:</strong> Stuff, stuff and stuff</li>
+                        <li><strong>Certification:</strong>
+                            <a href="/files/certification.pdf" download="certification.pdf">PDF</a>
+                            <a href="/files/certification.docx" download="certification.docx">Word</a>
+                            <a href="/files/certification.epub" download="certification.epub">ePub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>GREENLOOP &copy; 2025</p>
+    </footer>
+
+    <script>
+        // ==== JavaScript for displaying information ====
+        /**
+         * Toggles the visibility of the information display area.
+         * When any of the option buttons are clicked, this function makes the info box visible.
+         */
+        function displayInfo() {
+            const infoDisplay = document.getElementById('infoDisplay');
+            infoDisplay.style.display = 'block'; // Set display to 'block' to make it visible
+        }
+    </script>
+
+</body>
+</html>
 
