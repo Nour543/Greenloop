@@ -29,7 +29,7 @@ header {
     /* min-height: 70px; */
 
     /* ==== ADD these lines for background image ==== */
-    background: url('banner.jpg') no-repeat center center/cover;
+    background: url('banner2.jpg') no-repeat center center/cover;
     height: 150px; /* Adjust this height as needed to fit your image/design */
     display: flex; /* Keep this to help align content vertically */
     align-items: center; /* Keep this to center content vertically */
