@@ -104,5 +104,138 @@
         <p>GREENLOOP &copy; 2025</p>
     </footer>
 
+    <!-- Chatbot Icon -->
+    <div id="greenbot-icon" class="greenbot-icon">
+        <!-- Using the uploaded image_a10998.png for the icon -->
+        <img src="image_a10998.png" alt="GreenBot" onerror="this.onerror=null;this.src='https://placehold.co/40x40/cccccc/333333?text=Bot';" />
+        <span>Ask GreenBot</span>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div id="greenbot-chat-modal" class="greenbot-chat-modal">
+        <div class="chat-header">
+            <h3>GreenBot</h3>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="chat-body">
+            <div id="chat-messages" class="chat-messages">
+                <!-- Initial bot message -->
+                <div class="message bot">Hello! How can GreenBot assist you today?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type your message..." />
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==== Chatbot Functionality ====
+        const greenbotIcon = document.getElementById('greenbot-icon');
+        const greenbotChatModal = document.getElementById('greenbot-chat-modal');
+        const closeBtn = greenbotChatModal.querySelector('.close-btn');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+        const chatMessages = document.getElementById('chat-messages');
+
+        // --- Event Listeners for opening and closing the chat modal ---
+        greenbotIcon.addEventListener('click', () => {
+            greenbotChatModal.style.display = 'flex'; // Show the modal
+            chatInput.focus(); // Focus on input field when opened
+        });
+
+        closeBtn.addEventListener('click', () => {
+            greenbotChatModal.style.display = 'none'; // Hide the modal
+        });
+
+        // --- Handle sending message on button click ---
+        sendButton.addEventListener('click', sendMessage);
+
+        // --- Handle sending message on Enter key press ---
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        let chatHistory = [{ role: "user", parts: [{ text: "Hello! How can GreenBot assist you today?" }] }]; // Initial chat history
+
+        /**
+         * Appends a message to the chat display.
+         * @param {string} text - The message text.
+         * @param {string} sender - 'user' or 'bot'.
+         */
+        function appendMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the latest message
+        }
+
+        /**
+         * Sends the user's message to the LLM and displays the response.
+         */
+        async function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (userMessage === '') return; // Do nothing if input is empty
+
+            appendMessage(userMessage, 'user'); // Display user's message
+            chatInput.value = ''; // Clear input field
+
+            // Add user message to chat history for LLM context
+            chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
+
+            // --- Show loading indicator ---
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.classList.add('message', 'bot', 'loading-indicator');
+            loadingIndicator.textContent = 'GreenBot is typing...';
+            chatMessages.appendChild(loadingIndicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                // ==== Call the Gemini API for text generation ====
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Canvas provides this during runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`API error: ${response.status} ${response.statusText} - ${JSON.stringify(errorData)}`);
+                }
+
+                const result = await response.json();
+
+                // Remove loading indicator
+                chatMessages.removeChild(loadingIndicator);
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const botResponse = result.candidates[0].content.parts[0].text;
+                    appendMessage(botResponse, 'bot'); // Display bot's response
+                    // Add bot's response to chat history
+                    chatHistory.push({ role: "model", parts: [{ text: botResponse }] });
+                } else {
+                    appendMessage('Sorry, GreenBot could not generate a response.', 'bot');
+                    console.error('Unexpected API response structure:', result);
+                }
+            } catch (error) {
+                // Remove loading indicator
+                if (chatMessages.contains(loadingIndicator)) {
+                    chatMessages.removeChild(loadingIndicator);
+                }
+                console.error('Error fetching from Gemini API:', error);
+                appendMessage('Oops! Something went wrong. Please try again.', 'bot');
+            }
+        }
+    </script>
+
 </body>
 </html>
